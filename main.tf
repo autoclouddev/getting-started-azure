@@ -187,11 +187,12 @@ data "autocloud_blueprint_config" "resource_group" {
     type  = "raw"
     value = <<-EOT
       {
-        environment         = {{environment}}
-        location            = {{location}}
-        product_name        = {{name}}
-        resource_group_type = {{namespace}}
-      })
+        environment         = "{{environment}}"
+        location            = "{{location}}"
+        market              = null
+        product_name        = "{{name}}"
+        resource_group_type = "{{namespace}}"
+      }
       EOT
     variables = {
       namespace   = "global.variables.namespace"
