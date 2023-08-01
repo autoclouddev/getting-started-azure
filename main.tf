@@ -266,7 +266,6 @@ data "autocloud_blueprint_config" "storage_account" {
     "min_tls_version",
     "nfsv3_enabled",
     "service_endpoints",
-    "shared_access_key_enabled",
     "traffic_bypass",
   ]
 
@@ -368,6 +367,11 @@ data "autocloud_blueprint_config" "storage_account" {
   }
 
   variable {
+    name  = "storage_account.variables.shared_access_key_enabled"
+    value = true
+  }
+
+  variable {
     name  = "storage_account.variables.tags"
     value = "azure.variables.tags"
   }
@@ -403,6 +407,7 @@ data "autocloud_blueprint_config" "complete" {
     "storage_account.variables.blob_versioning_enabled",
     "storage_account.variables.container_delete_retention_days",
     "storage_account.variables.location",
+    "storage_account.variables.shared_access_key_enabled",
     "storage_account.variables.tags",
   ]
 
