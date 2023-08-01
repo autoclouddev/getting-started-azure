@@ -266,7 +266,6 @@ data "autocloud_blueprint_config" "storage_account" {
     "min_tls_version",
     "nfsv3_enabled",
     "service_endpoints",
-    "traffic_bypass",
   ]
 
   variable {
@@ -375,6 +374,12 @@ data "autocloud_blueprint_config" "storage_account" {
     name  = "storage_account.variables.tags"
     value = "azure.variables.tags"
   }
+
+  variable {
+    name  = "storage_account.variables.traffic_bypass"
+    type  = "raw"
+    value = "[\"Logging\", \"Metrics\", \"AzureServices\"]"
+  }
 }
 
 
@@ -409,6 +414,7 @@ data "autocloud_blueprint_config" "complete" {
     "storage_account.variables.location",
     "storage_account.variables.shared_access_key_enabled",
     "storage_account.variables.tags",
+    "storage_account.variables.traffic_bypass",
   ]
 
   display_order {
