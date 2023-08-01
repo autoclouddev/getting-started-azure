@@ -201,10 +201,14 @@ data "autocloud_blueprint_config" "resource_group" {
     type  = "raw"
     value = <<-EOT
       {
-        environment         = "{{environment}}"
-        location            = "{{location}}"
+        # Module hard codes naming as {resoruce_group_type}-{product_name}}-{environment}, 
+        # but we want {namespace}-{environment}-{name}, so pass name variable value to environment
+        # and environment variable value to product_name
+        environment = "{{name}}"        
+        location    = "{{location}}"
+        # Unused internally in module, but required to be present in input value
         market              = null
-        product_name        = "{{name}}"
+        product_name        = "{{environment}}"
         resource_group_type = "{{namespace}}"
       }
       EOT
