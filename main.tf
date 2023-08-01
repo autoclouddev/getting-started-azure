@@ -451,6 +451,11 @@ resource "autocloud_blueprint" "this" {
       name        = data.autocloud_blueprint_config.complete.variables["name"]
     }
 
+    ###
+    # Add version requirements and provider configuration to the top of the output file. See ./files/provider_config.hcl.tpl
+    # for content to be added.
+    header = file("./files/provider_config.hcl.tpl")
+
     modules = [
       autocloud_module.resource_group.name,
       autocloud_module.storage_account.name,

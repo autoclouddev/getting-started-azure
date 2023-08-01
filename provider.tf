@@ -27,13 +27,3 @@ provider "autocloud" {
 
   # token = ""
 }
-
-
-
-provider "azurerm" {
-  # By default, the Azure provider will use whatever authentication mechanism is configured in your shell
-  # environment. See the offical Azure provider documentation for details on how to configure Azure
-  # access for Terraform:
-  #
-  # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure
-}
