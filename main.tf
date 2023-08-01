@@ -100,6 +100,13 @@ data "autocloud_blueprint_config" "global" {
       rule          = "isRequired"
       error_message = "You must provide a name for the storage account"
     }
+
+    validation_rule {
+      rule          = "regex"
+      value         = "^[a-z0-9]+$"
+      scope         = "value"
+      error_message = "Must be only lower case letters and numbers, due to storage account name requriements."
+    }
   }
 }
 
@@ -326,7 +333,7 @@ data "autocloud_blueprint_config" "storage_account" {
     name         = "storage_account.variables.name"
     display_name = "Storage Account Name"
     helper_text  = "The name of the storage account that will be created"
-    value        = "{{namespace}}-{{environment}}-{{name}}"
+    value        = "{{namespace}}{{environment}}{{name}}"
     variables = {
       namespace   = "global.variables.namespace"
       environment = "global.variables.environment"
